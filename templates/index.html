@@ -1,23 +1,36 @@
 <html>
+<head>
+    <script>
+function reqListener () {
+  console.log(this.responseText);
+}
+isOn = False
+
+var oReq = new XMLHttpRequest();
+oReq.addEventListener("load", reqListener);
+
+function toggle(state){
+    if (state == False){
+        state = True
+        oReq.open("GET", "/redledon");
+        oReq.send()
+    }
+    else {
+        state = False
+        oReq.open("GET", "/redledoff");
+        oReq.send()
+    }
+}
+
+    </script>
+</head>
 
 <body>
 
 <title>Raspberry PI Remote Control</title>
 
 <h1>Raspberry PI Remote Control</h1>
-
-<form action="/redledon">
-
-   <input type="submit" value="Red LED On">
-
-</form>
-
-<form action="/redledoff">
-
-   <input type="submit" value="Red LED Off">
-
-</form>
-
+<input type="button" value="Toggle LED">
 </body>
 
 </html>
