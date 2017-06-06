@@ -4,12 +4,12 @@
 function reqListener () {
   console.log(this.responseText);
 }
-isOn = False
+state = False
 
 var oReq = new XMLHttpRequest();
 oReq.addEventListener("load", reqListener);
 
-function toggle(state){
+function toggle(){
     if (state == False){
         state = True
         oReq.open("GET", "/redledon");
@@ -30,7 +30,7 @@ function toggle(state){
 <title>Raspberry PI Remote Control</title>
 
 <h1>Raspberry PI Remote Control</h1>
-<input type="button" value="Toggle LED">
+<input type="button" value="Toggle LED" onclick="toggle">
 </body>
 
 </html>
