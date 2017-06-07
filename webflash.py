@@ -12,17 +12,21 @@ from flask import Flask, render_template, redirect, url_for
 
 app = Flask(__name__)
 
+status = False
+
 @app.route('/index')
 @app.route('/')
 def index():
-
- return render_template('index.html')
+ global status
+ return render_template('index.html', status=str(status).lower())
 
 @app.route('/redledon')
 
 def redledon():
 
  GPIO.output(17, GPIO.HIGH)
+ global status
+ status = True
  return "true"
  #return redirect(url_for('index'))
 
@@ -31,6 +35,8 @@ def redledon():
 def redledoff():
 
  GPIO.output(17, GPIO.LOW)
+ global status
+ status = False
  return "false"
  #return redirect(url_for('index'))
 
