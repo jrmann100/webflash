@@ -1,28 +1,5 @@
 <html>
 <head>
-    <script>
-function reqListener () {
-  console.log(this.responseText);
-}
-state = False
-
-var oReq = new XMLHttpRequest();
-oReq.addEventListener("load", reqListener);
-
-function toggle(){
-    if (state == False){
-        state = True
-        oReq.open("GET", "/redledon");
-        oReq.send()
-    }
-    else {
-        state = False
-        oReq.open("GET", "/redledoff");
-        oReq.send()
-    }
-}
-
-    </script>
 </head>
 
 <body>
@@ -30,7 +7,37 @@ function toggle(){
 <title>Raspberry PI Remote Control</title>
 
 <h1>Raspberry PI Remote Control</h1>
-<input type="button" value="Toggle LED" onclick="toggle">
+<input type="submit" value="Toggle LED" id="input" onclick="toggle()">
+<script>
+input = document.getElementById("input")
+input.focus()
+function reqListener () {
+  console.log(this.responseText);
+}
+state = false
+
+var oReq = new XMLHttpRequest();
+oReq.addEventListener("load", reqListener);
+
+function toggle(){
+    if (state == false){
+        state = true
+        oReq.open("GET", "/redledon");
+        oReq.send()
+	input.style.background="red"
+    }
+    else {
+        state = false
+        oReq.open("GET", "/redledoff");
+        oReq.send()
+	input.style.background=""
+    }
+}
+
+if(state == true){
+	input.style.background="red"
+}
+</script>
 </body>
 
 </html>

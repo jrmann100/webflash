@@ -12,8 +12,6 @@ from flask import Flask, render_template, redirect, url_for
 
 app = Flask(__name__)
 
-isOn = False
-
 @app.route('/index')
 @app.route('/')
 def index():
@@ -25,8 +23,7 @@ def index():
 def redledon():
 
  GPIO.output(17, GPIO.HIGH)
-
- return "Red LED on"
+ return "true"
  #return redirect(url_for('index'))
 
 @app.route('/redledoff')
@@ -34,8 +31,7 @@ def redledon():
 def redledoff():
 
  GPIO.output(17, GPIO.LOW)
-
- return "Red LED off"
+ return "false"
  #return redirect(url_for('index'))
 
 if __name__ == "__main__":
