@@ -1,43 +1,37 @@
 <html>
-<head>
-</head>
-
-<body>
-
-<title>Raspberry PI Remote Control</title>
-
-<h1>Raspberry PI Remote Control</h1>
-<input type="submit" value="Toggle LED" id="input" onclick="toggle()">
-<script>
-input = document.getElementById("input")
-input.focus()
-function reqListener () {
-  console.log(this.responseText);
-}
-state = {{status}}
-
-var oReq = new XMLHttpRequest();
-oReq.addEventListener("load", reqListener);
-
-function toggle(){
-    if (state == false){
-        state = true
-        oReq.open("GET", "/redledon");
-        oReq.send()
-	input.style.background="red"
-    }
-    else {
-        state = false
-        oReq.open("GET", "/redledoff");
-        oReq.send()
-	input.style.background=""
-    }
-}
-
-if(state == true){
-	input.style.background="red"
-}
-</script>
-</body>
-
+	<body>
+	<title>Raspberry Pi Remote Control</title>
+	<h1>Raspberry Pi Remote Control</h1>
+	<input type="submit" value="Toggle LED" id="input" onclick="toggle()">
+	<script>
+		input = document.getElementById("input")
+		input.focus()
+		
+		function reqListener() {
+			console.log(this.responseText)
+		}
+		state = {{state}}
+		
+		var oReq = new XMLHttpRequest()
+		oReq.addEventListener("load", reqListener)
+		
+		function toggle() {
+			if (state == false) {
+				state = true
+				oReq.open("GET", "/redledon")
+				oReq.send()
+				input.style.background = "red"
+			} else {
+				state = false
+				oReq.open("GET", "/redledoff")
+				oReq.send()
+				input.style.background = ""
+			}
+		}
+		
+		if (state) {
+			input.style.background = "red"
+		}      
+	</script>
+	</body>
 </html>

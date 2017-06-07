@@ -17,29 +17,29 @@ status = False
 @app.route('/index')
 @app.route('/')
 def index():
- global status
- return render_template('index.html', status=str(status).lower())
+	global status
+	return render_template('index.html', status=str(status).lower())
 
 @app.route('/redledon')
 
 def redledon():
 
- GPIO.output(17, GPIO.HIGH)
- global status
- status = True
- return "true"
- #return redirect(url_for('index'))
+	GPIO.output(17, GPIO.HIGH)
+	global status
+	status = True
+	return "true"
+	#return redirect(url_for('index'))
 
 @app.route('/redledoff')
 
 def redledoff():
 
- GPIO.output(17, GPIO.LOW)
- global status
- status = False
- return "false"
- #return redirect(url_for('index'))
+	GPIO.output(17, GPIO.LOW)
+	global status
+	status = False
+	return "false"
+	#return redirect(url_for('index'))
 
 if __name__ == "__main__":
 
- app.run(host='0.0.0.0')
+	app.run(host='0.0.0.0')
