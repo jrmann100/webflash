@@ -33,7 +33,7 @@ pygobject==3.14.0
 pyinotify==0.9.4
 pyserial==2.6
 python-apt==0.9.3.12
-requests==2.4.3
+requests==2.20.0
 rsa==4.7
 sense-emu==1.0
 sense-hat==2.2.0
