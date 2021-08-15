@@ -24,7 +24,7 @@ picraft==1.0
 pifacecommon==4.2.1
 pifacedigitalio==3.1.0
 pigpio==1.35
-pyOpenSSL==0.13.1
+pyOpenSSL==17.5.0
 pyasn1==0.2.3
 pyasn1-modules==0.0.9
 pycryptodomex==3.4.6
